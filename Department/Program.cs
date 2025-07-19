@@ -17,6 +17,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseAuthentication(); // Ensure this is called before UseAuthorization
 
 app.UseAuthorization();
 
