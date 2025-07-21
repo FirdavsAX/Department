@@ -1,8 +1,10 @@
 ﻿using Domain.Entities;
+using Domain.User;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Data;
-public class ApplicationDbContext: DbContext
+public class ApplicationDbContext: IdentityDbContext<User>
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) 
         : base(options)
@@ -15,11 +17,16 @@ public class ApplicationDbContext: DbContext
     public virtual DbSet<Article> Articles { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder);
+
         modelBuilder.Entity<Article>()
             .HasOne(a => a.Category)
             .WithMany(c => c.Articles)
             .HasForeignKey(a => a.CategoryId)
             .OnDelete(DeleteBehavior.Cascade);
+
+        modelBuilder.Entity<User>().Property(u => u.Initials).HasMaxLength(5);
+        modelBuilder.HasDefaultSchema("identity");
     }
 }
 
