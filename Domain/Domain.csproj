@@ -6,9 +6,11 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+
   <ItemGroup>
     <ProjectReference Include="..\Shared\Shared.csproj" />
     <Folder Include="Entities\" />
   </ItemGroup>
+
 
 </Project>
