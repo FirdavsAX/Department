@@ -17,8 +17,9 @@
   </ItemGroup>
   
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <Folder Include="Middlewares\" />
     <ProjectReference Include="..\Application\Application.csproj" />
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
     <ProjectReference Include="..\Shared\Shared.csproj" />
   </ItemGroup>
 
