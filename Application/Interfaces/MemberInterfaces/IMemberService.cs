@@ -1,7 +1,7 @@
 ﻿using Application.DTOs.MemberDto;
 using Domain.Entities;
 
-namespace Application.Interfaces;
+namespace Application.Interfaces.MemberInterfaces;
 
 public interface IMemberService
 {

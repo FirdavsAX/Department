@@ -1,6 +1,6 @@
 ﻿
 using Application.DTOs.MemberDto;
-using Application.Interfaces;
+using Application.Interfaces.MemberInterfaces;
 using Domain.Entities;
 using System.ComponentModel.DataAnnotations;
 
@@ -31,6 +31,10 @@ public class MemberService : IMemberService
     {
         var memberById = await _memberRepository.GetMemberByIdAsync(id);
        
+        if(memberById is null)
+        {
+            return null;
+        }
         var readMemberDto = new ReadMemberDto
         {
             Id = memberById.Id,

@@ -1,6 +1,8 @@
-using Application.Interfaces;
+using Application.Interfaces.CategoryInterfaces;
+using Application.Interfaces.MemberInterfaces;
 using Application.Services;
 using Infrastructure.Data;
+using Infrastructure.DataSeeder;
 using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.RateLimiting;
@@ -16,9 +18,18 @@ builder.Services.AddSwaggerGen();
 //DI 
 builder.Services.AddScoped<IMemberRepository, MemberRepository>();
 builder.Services.AddScoped<IMemberService, MemberService>();
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
 
 var app = builder.Build();
+// fake data seeding
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
 
+    await FakeDataSeeder.FakeCategories(context, 50); // Baza to‘ldiriladi
+    await FakeDataSeeder.FakeMembers(context, 50); // Baza to‘ldiriladi
+}
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

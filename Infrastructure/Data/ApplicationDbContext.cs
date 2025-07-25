@@ -8,7 +8,7 @@ public class ApplicationDbContext: DbContext
         : base(options)
     {
     }
-    public virtual DbSet<Member> Members { get; set; }
+    public virtual DbSet<Member> Members { get; set; } // finished
     public virtual DbSet<Announcement> Announcements { get; set; }
     public virtual DbSet<ContactMessage> ContactMessages { get; set; }
     public virtual DbSet<Category> Categories { get; set; }
