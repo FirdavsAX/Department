@@ -1,6 +1,5 @@
-﻿
-using Domain.Entities;
-namespace Application.Interfaces;
+﻿using Domain.Entities;
+namespace Application.Interfaces.MemberInterfaces;
 public interface IMemberRepository
 {
     Task<IEnumerable<Member>> GetAllMembersAsync();

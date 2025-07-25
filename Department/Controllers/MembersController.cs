@@ -1,5 +1,5 @@
 ﻿using Application.DTOs.MemberDto;
-using Application.Interfaces;
+using Application.Interfaces.MemberInterfaces;
 using Domain.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

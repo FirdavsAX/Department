@@ -1,4 +1,4 @@
-﻿using Application.Interfaces;
+﻿using Application.Interfaces.MemberInterfaces;
 using Domain.Entities;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -20,10 +20,6 @@ public class MemberRepository : IMemberRepository
     public async Task<Member> GetMemberByIdAsync(int id)
     {
         Member? member = await _context.Members.FirstOrDefaultAsync(m => m.Id == id);
-        if (member == null)
-        {
-            throw new KeyNotFoundException($"Member with id {id} not found.");
-        }
         return member;
     }
 
